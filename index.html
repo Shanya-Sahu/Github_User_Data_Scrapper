@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Detective</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script
+      src="https://kit.fontawesome.com/bef12613b3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="bg-gray-100 w-full dark-bg pt-10 md:pt-0">
+      <section
+        class="wrapper w-[90%] md:w-[700px] min-h-[100vh] mx-auto flex justify-center items-center flex-col"
+      >
+        <div
+          class="flex justify-between items-center w-full px-2 bg-[rgb(255,255,255)] backdrop:blur-[10px] sticky top-0 py-3 md:static md:bg-transparent md:backdrop:blur-none dark-bg"
+        >
+          <h1
+            class="font-bold text-3xl text-[var(--dark-mode-color)] dark-bg main-heading"
+          >
+            Dev Detective
+          </h1>
+          <button>
+            <div class="text-[var(--dark-mode-color)] text-2xl dark-bg">
+              <i class="fa-solid fa-moon" data-themeMode></i>
+              <!-- <i class="fa-solid fa-sun hidden" data-lightmode></i> -->
+            </div>
+          </button>
+        </div>
+        <!-- search bar -->
+        <div
+          class="search-bar flex items-center justify-evenly w-full h-[60px] rounded-md mt-6 bg-white dark-bg"
+        >
+          <i
+            class="fa-solid fa-magnifying-glass text-[var(--primary-color)]"
+          ></i>
+          <input
+            type="text"
+            name="search"
+            id="search"
+            class="w-[40%] md:w-[70%] h-[40px] text-left dark-bg"
+            placeholder="Serach"
+          />
+          <button
+            class="bg-[var(--primary-color)] py-2 px-5 rounded-md text-white"
+            onclick="getData();"
+          >
+            Search
+          </button>
+        </div>
+        <br />
+
+        <!-- loader -->
+        <span class="loader hidden"></span>
+
+        <!-- NOT FOUND MESSAGE -->
+        <div class="p-4 md:p-10 hidden" data-notFound>
+          <h1 class="font-bold text-2xl pb-1 main-heading text-center">
+            <i class="fa-solid fa-triangle-exclamation"></i> Not Found
+          </h1>
+          <span class="text-slate-400">please search valid username!</span>
+        </div>
+
+        <!-- github-profile-data -->
+        <div
+          class="github-profile-data p-4 md:p-10 rounded-md bg-white dark-bg w-[100%] md:min-w-[700px]"
+        >
+          <div
+            class="flex justify-between items-center flex-col sm:flex-row w-full flex-wrap md:pb-10"
+          >
+            <div class="w-[30%]">
+              <img
+                src=""
+                alt=""
+                class="w-[70px] h-[70px] md:w-[120px] md:h-[120px] rounded-full"
+                data-profile
+              />
+            </div>
+            <div class="w-[100%] text-justify md:w-[70%] md:text-left">
+              <div
+                class="flex justify-between items-center flex-col sm:flex-row w-full"
+              >
+                <div class="md:w-[70%]">
+                  <h2
+                    class="font-bold text-2xl pb-1 main-heading"
+                    data-username
+                  ></h2>
+                </div>
+                <div class="flex md:w-[30%]">
+                  <h2 class="text-[var(--primary-color)] font-semibold pr-2">
+                    Joined
+                  </h2>
+                  <p data-joined></p>
+                </div>
+              </div>
+
+              <a
+                href=""
+                data-login-link
+                target="_blank"
+                class="text-center md:text-left"
+              >
+                <h3
+                  data-login
+                  class="text-[var(--primary-color)] font-[500] underline"
+                ></h3>
+              </a>
+              <p data-bio class="mt-3"></p>
+            </div>
+          </div>
+
+          <div
+            class="flex justify-evenly items-center flex-col sm:flex-row w-full py-4 my-2 text-center"
+          >
+            <div>
+              <h5 class="text-[var(--primary-color)] font-[600] pb-1">Repos</h5>
+              <p data-repos class="text-2xl font-bold"></p>
+            </div>
+            <div>
+              <p class="text-[var(--primary-color)] font-[600] pb-1">
+                Followers
+              </p>
+              <h5 data-followers class="text-2xl font-bold"></h5>
+            </div>
+            <div>
+              <p class="text-[var(--primary-color)] font-[600] pb-1">
+                Following
+              </p>
+              <h5 data-following class="text-2xl font-bold"></h5>
+            </div>
+          </div>
+
+          <div
+            class="flex justify-evenly items-start sm:items-center flex-col sm:flex-row w-full flex-wrap"
+          >
+            <div class="w-[50%] py-2 flex justify-start items-center">
+              <i class="fa-solid fa-link text-[var(--primary-color)] mr-3"></i>
+              <a href="" data-id target="_blank"></a>
+            </div>
+
+            <div class="w-[50%] py-2 flex justify-start items-center">
+              <i
+                class="fa-solid fa-location-dot text-[var(--primary-color)] mr-3"
+              ></i>
+              <p data-location target="_blank"></p>
+            </div>
+
+            <div class="w-[50%] py-2 flex justify-start items-center">
+              <i
+                class="fa-brands fa-github text-[var(--primary-color)] mr-3"
+              ></i>
+              <a href="" data-link target="_blank"></a>
+            </div>
+
+            <div class="w-[50%] py-2 flex justify-start items-center">
+              <i
+                class="fa-brands fa-twitter text-[var(--primary-color)] mr-3"
+              ></i>
+              <a href="" data-twitter-link target="_blank"></a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            class="bg-[var(--primary-color)] py-2 px-5 rounded-md text-white mt-5 hidden"
+            onclick="window.print()"
+            data-print
+          >
+            Print
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
