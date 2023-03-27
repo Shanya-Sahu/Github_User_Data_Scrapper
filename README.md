@@ -1,8 +1,3 @@
 # Github_User_Data_Scrapper
-We can find github user profile data here,
-when we search the correct username in the search bar,
-this is fetch the data usign github user api & return data in the screen,
-when username is incorrect it'll be show not found message!
-
-In this project I used HTML, CSS, JS & Tailwind CSS.
+This project is a web application that allows users to search for GitHub user profile data by entering a username in a search bar. The application utilizes the GitHub API to retrieve the user's profile data and display it on the screen. The front-end of the application has been built using HTML, CSS, JavaScript, and Tailwind CSS.
  
